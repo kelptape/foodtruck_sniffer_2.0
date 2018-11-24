@@ -1,9 +1,10 @@
 require('dotenv').config();
-import express from 'express';
-import bodyParser from 'body-parser';
-import twitterWebhook from 'twitter-webhooks';
+const express = require('express');
+const bodyParser = require('body-parser');
+const twitterWebhook = require('twitter-webhooks');
 
 const db = require('./models');
+const routes = require('./routes');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -58,21 +59,9 @@ webhook.on('event', (event, userId, data) => {
   ).then(udpatedLocation => console.log(udpatedLocation));
 });
 
-// Handlebars
-app.engine(
-  'handlebars',
-  exphbs({
-    defaultLayout: 'main'
-  })
-);
-app.set('view engine', 'handlebars');
-
 // Routes
 app.use('/', webhook);
-require('./routes/yelpreview-api-routes')(app);
-require('./routes/trucks-api-routes')(app);
-require('./routes/htmlRoutes')(app);
-require('./routes/server-side-yelp-api');
+app.use(routes);
 
 // Helper
 require('./helper/yelpAPIcall');
