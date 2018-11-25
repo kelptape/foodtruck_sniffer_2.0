@@ -1,5 +1,5 @@
 {
-  "name": "mern",
+  "name": "foodtruck_sniffer_2.0",
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
@@ -27,6 +27,7 @@
     "mongoose": "^5.0.17",
     "mysql2": "^1.6.4",
     "react-google-maps": "^9.4.5",
-    "sequelize": "^4.41.2"
+    "sequelize": "^4.41.2",
+    "twitter-webhooks": "^0.2.3"
   }
 }
