@@ -1,9 +1,18 @@
 const db = require('../models');
+var Sequelize = require("sequelize");
+const Op = Sequelize.Op;
 
 module.exports = {
   findAll: (req, res) => {
     db.FoodTruck
-      .findAll({ include: [db.YelpReview]})
+      .findAll({include: [ db.YelpReview ]})
+      .then(dbFoodTrucks => res.json(dbFoodTrucks))
+      .catch(err => res.status(422).json(err));
+  },
+
+  findForMap: (req, res) => {
+    db.FoodTruck
+      .findAll({where: { lat: {[Op.between]: [req.query.lowLat, req.query.highLat ]}, long: {[Op.between]: [req.query.lowLong, req.query.highLong ]}}, include: [ db.YelpReview ]})
       .then(dbFoodTrucks => res.json(dbFoodTrucks))
       .catch(err => res.status(422).json(err));
   },

@@ -1,22 +1,20 @@
-const router = require('express').Router();
-const truckController = require('../../controller/truckController');
+var express = require('express');
+var router = express.Router();
+const trucksController = require("../../controller/truckController");
 
+// Matches with "/api/trucks"
+router.route("/")
+  .get(trucksController.findAll)
+  .post(trucksController.create);
+// Matches with "/api/trucks/map"
+router.route("/map")
+  .get(trucksController.findForMap)
+
+// Matches with "/api/trucks/:id"
 router
-  .route('/')
-  .get(truckController.findAll)
-  .post(truckController.create);
-
-router
-  .route('/:id')
-  .get(truckController.findOne)
-  .delete(truckController.destroy);
-
-router 
-  .route('/twitter')
-  .put(truckController.update);
-
-router
-  .route('/yelp')
-  .put(truckController.update);
+  .route("/:id")
+  .get(trucksController.findOne)
+  .put(trucksController.update)
+  .delete(trucksController.destroy);
 
 module.exports = router;
