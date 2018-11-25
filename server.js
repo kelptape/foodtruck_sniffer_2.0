@@ -46,10 +46,14 @@ webhook.on('event', (event, userId, data) => {
     .split(' ')	
     .slice(1)	
     .join(' ');
-    
+    const lat = convertAddressLat(address);
+    const lng = convertAddressLong(address);
+
    db.FoodTruck.update(	
     {	
       address: address,	
+      lat: lat,
+      long: lng,
       addressUpdated: data.created_at	
     },	
     {	
