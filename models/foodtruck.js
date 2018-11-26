@@ -25,15 +25,14 @@ module.exports = (sequelize, DataTypes) => {
       defaultValue: "Mariana Trench"
       //We will have to set a default address to prevent issues with the map markers
     },
-    // // From Twitter
-    // thumbnail: {
-    //   type: DataTypes.STRING,
-    //   allowNull: true,
-    //   //We can set a default thumbnail
-    //   validate: {
-    //     isUrl: true
-    //   }
-    // },
+    lat: {
+      type: DataTypes.FLOAT,
+      allowNull: false
+    },
+    long:{
+      type: DataTypes.FLOAT,
+      allowNull: false
+    },
     //From Yelp
     overallRating: {
       type: DataTypes.STRING

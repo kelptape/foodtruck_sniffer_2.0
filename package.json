@@ -1,16 +1,32 @@
 {
   "name": "foodtruck_sniffer_2.0",
   "version": "1.0.0",
-  "main": "index.js",
-  "repository": "https://github.com/aotolbert/foodtruck_sniffer_2.0.git",
-  "author": "Chace Powell <cpcpowell8@gmail.com>",
-  "license": "MIT",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
+    "start:prod": "node server.js",
+    "start:dev": "concurrently \"nodemon --ignore 'client/*'\" \"npm run client\"",
+    "client": "cd client && npm run start",
+    "seed": "node scripts/seedDB.js",
+    "install": "cd client && yarn install",
+    "build": "cd client && npm run build",
+    "heroku-postbuild": "npm run build"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "concurrently": "^3.5.0",
+    "nodemon": "^1.11.0"
+  },
   "dependencies": {
-    "axios": "^0.18.0",
-    "body-parser": "^1.18.3",
-    "dotenv": "^6.1.0",
-    "express": "^4.16.4",
+    "axios": "^0.16.2",
+    "body-parser": "^1.17.2",
+    "express": "^4.15.4",
+    "if-env": "^1.0.4",
+    "mongoose": "^5.0.17",
     "mysql2": "^1.6.4",
+    "react-google-maps": "^9.4.5",
     "sequelize": "^4.41.2",
     "twitter-webhooks": "^0.2.3"
   }
