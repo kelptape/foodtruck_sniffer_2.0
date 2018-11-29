@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { withGoogleMap, withScriptjs, GoogleMap, Marker } from "react-google-maps";
 import API from "../../utils/API";
 
-
 class Map extends Component {
   state = {
     Center: { lat: 35.22, lng: -80.84 },
@@ -68,8 +67,8 @@ class Map extends Component {
 
         </GoogleMap>
 
-      )))
-      ;
+      )));
+      
     return (
       <div>
         <GoogleMapExample
@@ -143,7 +142,7 @@ class Map extends Component {
           }}
           googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyA6pItobxq0v_r7pWG5w_R36jtaVw8h520"
           loadingElement={<div style={{ height: `100%` }} />}
-          containerElement={<div style={{ height: `400px` }} />}
+          containerElement={<div style={{ height: `100vh` }} />}
           mapElement={<div style={{ height: `100%` }} />}
         />
       </div>
